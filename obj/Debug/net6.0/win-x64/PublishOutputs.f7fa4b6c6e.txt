@@ -1,0 +1,2 @@
+C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Debug\net6.0\win-x64\publish\FortniteLauncher.pdb
+C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Debug\net6.0\win-x64\publish\FortniteLauncher.exe

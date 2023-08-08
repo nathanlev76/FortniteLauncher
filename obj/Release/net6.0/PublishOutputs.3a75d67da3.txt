@@ -1,0 +1,10 @@
+C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\app.publish\FortniteLauncher.exe
+C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\app.publish\FortniteLauncher.dll
+C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\app.publish\FortniteLauncher.deps.json
+C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\app.publish\FortniteLauncher.runtimeconfig.json
+C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\app.publish\FortniteLauncher.pdb
+C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\app.publish\Newtonsoft.Json.dll
+C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\app.publish\RestSharp.dll
+C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\app.publish\System.Text.Encodings.Web.dll
+C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\app.publish\System.Text.Json.dll
+C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\app.publish\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
