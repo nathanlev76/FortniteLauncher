@@ -11,12 +11,11 @@ namespace CandyLauncher
 {
     class Requests
     {
-        public static Loggers logger = new Loggers();
         private static void sendRequestLog(string url, RestRequest request, RestResponse response)
         {
             if(Globals.debug == "true")
             {
-                Console.WriteLine($"[{logger.Green((request.Method.ToString()))}] {logger.Aqua(response.StatusDescription.ToString())} ({logger.Pink(response.StatusCode.ToString())}): {logger.Aqua(url)}");
+                Console.WriteLine($"[{Color.LightGreen}{request.Method}{Color.Clean}] {Color.Aqua}{response.StatusDescription}{Color.Clean} ({Color.Pink}{(int)response.StatusCode}{Color.Clean}): {Color.Aqua}{url}{Color.Clean}");
             }
             
         }
@@ -39,7 +38,7 @@ namespace CandyLauncher
                 {
                     Console.Clear();
                 }
-                Console.WriteLine(logger.Red("Erreur ! Exchange Code invalide ou expiré !"));
+                Console.WriteLine(Color.Red + "Erreur ! Exchange Code invalide ou expiré !" + Color.Clean);
                 return "Error";
 
             }
@@ -129,10 +128,6 @@ namespace CandyLauncher
                 string device_id = (string)jsonObject["deviceId"];
                 string secret = (string)jsonObject["secret"];
                 Config.AddAccount(name, account_id, device_id, secret);
-                if (Globals.debug == "false")
-                {
-                    Console.Clear();
-                }
                 Program.Selector();
             }
         }

@@ -44,17 +44,9 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
-            "Pastel": {
-              "target": "Package",
-              "version": "[4.1.0, )"
-            },
             "RestSharp": {
               "target": "Package",
               "version": "[110.2.0, )"
-            },
-            "Serilog": {
-              "target": "Package",
-              "version": "[3.0.1, )"
             }
           },
           "imports": [
@@ -74,11 +66,6 @@
             }
           },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
-        }
-      },
-      "runtimes": {
-        "win-x64": {
-          "#import": []
         }
       }
     }

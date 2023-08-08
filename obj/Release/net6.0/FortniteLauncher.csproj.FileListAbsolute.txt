@@ -19,5 +19,3 @@ C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\
 C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\obj\Release\net6.0\FortniteLauncher.csproj.CopyComplete
 C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\Newtonsoft.Json.dll
-C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\Pastel.dll
-C:\Users\Nathan\Desktop\Logiciels\FortniteLauncher\FortniteLauncher\bin\Release\net6.0\Serilog.dll

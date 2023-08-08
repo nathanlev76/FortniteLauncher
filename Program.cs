@@ -6,20 +6,14 @@ using Newtonsoft.Json;
 using System.Linq;
 using RestSharp;
 using System.Diagnostics;
-using Serilog;
-using Serilog.Core;
 
 namespace CandyLauncher
 {
     class Program
     {
-        public static Loggers logger = new Loggers();
         static void Main(string[] args)
         {
             Config.Check();
-
-            Console.Title = "Candy Launcher";
-
             Selector("Bienvenue");
         }
 
@@ -30,14 +24,14 @@ namespace CandyLauncher
             Config.ConfigData config = Config.Read();
             if (message != "None") 
             {
-                Console.WriteLine($"{logger.Green($"Bienvenue dans le CandyLauncher v{Globals.version} !")}\n");
+                Console.WriteLine(Color.Green + $"Bienvenue dans le CandyLauncher v{Globals.version} !\n" + Color.Clean);
             }
             
-            Console.WriteLine($"{logger.Aqua("0")}: Ajouter un compte");
+            Console.WriteLine($"{Color.Aqua}0{Color.Clean}: Ajouter un compte");
             foreach (string key in config.accounts.Keys)
             {
                 nb++;
-                Console.WriteLine($"{logger.Aqua(nb.ToString())}: {key}");
+                Console.WriteLine($"{Color.Aqua}{nb}{Color.Clean}: {key}");
             }
             Console.Write("\nNuméro du compte à lancer: ");
             string name = Console.ReadLine();
@@ -55,7 +49,6 @@ namespace CandyLauncher
                     string displayname = (string)jsonObject["displayName"];
 
                     Requests.GenerateDeviceAuth(access_token, account_id, displayname);
-                    Console.Clear();
                 }
                 else
                 {
@@ -77,7 +70,7 @@ namespace CandyLauncher
                     {
                         Console.Clear();
                     }
-                    Console.WriteLine($"{logger.Red("Erreur ! Entre un nombre correct !")}");
+                    Console.WriteLine(Color.Red + "Erreur ! Entre un nombre correct !" + Color.Clean);
                     Selector();
                 }
                 else
@@ -92,7 +85,7 @@ namespace CandyLauncher
                     string secret = config.accounts.ElementAt(number - 1).Value.secret;
                     string accountname = config.accounts.ElementAt(number - 1).Key;
 
-                    Console.WriteLine($"{logger.Aqua("Vérification en cours...")}");
+                    Console.WriteLine(Color.Aqua + "Vérification en cours... " + Color.Clean);
                     RestResponse tokenResponse = Requests.GetTokenByDeviceAuth(account_id, device_id, secret);
                     JObject jsonObject = JsonConvert.DeserializeObject<JObject>(tokenResponse.Content.ToString());
                     string access_token = (string)jsonObject["access_token"];
@@ -102,7 +95,7 @@ namespace CandyLauncher
                         {
                             Console.Clear();
                         }
-                        Console.WriteLine($"{logger.Red($"Les identifiants pour le compte {accountname} sont invalides !")}");
+                        Console.WriteLine($"{Color.Red}Les identifiants pour le compte {accountname} sont invalides !{Color.Clean}");
                         Selector();
                     }
                     else
@@ -127,7 +120,7 @@ namespace CandyLauncher
                         process.StandardInput.WriteLine(command);
                         process.StandardInput.Close();
 
-                        Console.WriteLine($"{ logger.Aqua($"Lancement du compte {logger.Pink(config.accounts.ElementAt(number - 1).Key)} ...")}");
+                        Console.WriteLine(Color.Aqua + "Lancement du compte " + Color.Pink + config.accounts.ElementAt(number - 1).Key + Color.Aqua + "..." + Color.Clean);
                     }
                    
                     

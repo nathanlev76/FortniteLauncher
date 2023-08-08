@@ -16,8 +16,8 @@ namespace CandyLauncher
             string fileName = "config.json";
             if (!File.Exists(fileName))
             {
-                Console.WriteLine("Le fichier config.json n'existe pas, création du fichier !\n");
-                string jsonContent = "{\"fortnite_path\": \"C:/Program Files/Epic Games/Fortnite/FortniteGame/Binaries/Win64\", \"debug\": \"false\", \"accounts\": {}}";
+                Console.WriteLine(Color.Green + "Le fichier config.json n'existe pas, création du fichier !\n" + Color.Clean);
+                string jsonContent = "{\"fortnite_path\": \"C:\\Program Files\\Epic Games\\Fortnite\\FortniteGame\\Binaries\\Win64\", \"debug\": \"false\", \"accounts\": {}}";
                 File.WriteAllText(fileName, jsonContent);
             }
         }
