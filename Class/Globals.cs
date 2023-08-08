@@ -13,5 +13,6 @@ namespace FortniteLauncher.Class
         public static string debug { get; set; } = "false";
 
         public const string version = "0.0.1";
+        public static string path { get; set; } = "";
     }
 }
