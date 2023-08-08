@@ -83,6 +83,10 @@ namespace CandyLauncher
             JObject jsonObject2 = JsonConvert.DeserializeObject<JObject>(response.Content.ToString()) ;
             string exchange = (string)jsonObject2["code"];
 
+
+
+
+
             string url2 = Endpoint.Token;
             RestClient client2 = new RestClient(url2);
             RestRequest request2 = new RestRequest("", Method.Post);
@@ -93,14 +97,16 @@ namespace CandyLauncher
             request2.AddParameter("exchange_code", exchange);
 
             RestResponse response2 = client2.Execute(request2);
+            Console.WriteLine(response2.Content.ToString());
             sendRequestLog(url2, request2, response2);
             JObject jsonObject = JsonConvert.DeserializeObject<JObject>(response2.Content.ToString());
-            string accessToken = (string)jsonObject2["access_token"];
+            string accessToken = (string)jsonObject["access_token"];
+
 
             string url3 = Endpoint.ExchangeCode;
             RestClient client3 = new RestClient(url3);
             RestRequest request3 = new RestRequest("", Method.Get);
-            string token3 = $"bearer {access_token}";
+            string token3 = $"bearer {accessToken}";
             request3.AddHeader("Authorization", token3);
             request3.AddHeader("Content-Type", "application/json");
             RestResponse response3 = client3.Execute(request3);
@@ -108,6 +114,7 @@ namespace CandyLauncher
 
             JObject jsonObject3 = JsonConvert.DeserializeObject<JObject>(response3.Content.ToString());
             string exchange3 = (string)jsonObject3["code"];
+            Console.WriteLine($"{jsonObject3.ToString()}");
             return exchange3;
         }
 

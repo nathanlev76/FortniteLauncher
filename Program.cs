@@ -112,22 +112,23 @@ namespace CandyLauncher
                         string workingDirectory = Globals.path;
                         string command = $"start \"\" FortniteLauncher.exe -AUTH_LOGIN=unused -AUTH_PASSWORD={response} AUTH_TYPE=exchangecode -epicapp=Fortnite -epicenv=Prod -epicportal";
 
-                        ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe")
-                        {
-                            WorkingDirectory = workingDirectory,
-                            RedirectStandardInput = true,
-                            RedirectStandardOutput = true,
-                            CreateNoWindow = true,
-                            UseShellExecute = false,
-                        };
+                        //ProcessStartInfo processStartInfo = new ProcessStartInfo("cmd.exe")
+                        //{
+                        //    WorkingDirectory = workingDirectory,
+                        //    RedirectStandardInput = true,
+                        //    RedirectStandardOutput = true,
+                        //    CreateNoWindow = true,
+                        //    UseShellExecute = false,
+                        //};
 
-                        Process process = new Process { StartInfo = processStartInfo };
-                        process.Start();
+                        //Process process = new Process { StartInfo = processStartInfo };
+                        //process.Start();
 
-                        process.StandardInput.WriteLine(command);
-                        process.StandardInput.Close();
+                        //process.StandardInput.WriteLine(command);
+                        //process.StandardInput.Close();
 
                         Console.WriteLine($"{ logger.Aqua($"Lancement du compte {logger.Pink(config.accounts.ElementAt(number - 1).Key)} ...")}");
+                        Console.ReadKey();
                     }
                    
                     
