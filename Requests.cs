@@ -12,15 +12,17 @@ namespace CandyLauncher
     class Requests
     {
         public static Loggers logger = new Loggers();
+
         private static void sendRequestLog(string url, RestRequest request, RestResponse response)
         {
-            if(Globals.debug == "true")
+            if(Globals.debug)
             {
                 Console.WriteLine($"[{logger.Green((request.Method.ToString()))}] {logger.Aqua(response.StatusDescription.ToString())} ({logger.Pink(response.StatusCode.ToString())}): {logger.Aqua(url)}");
             }
             
         }
-        public static string GetTokenByExchange(string exchange_code, string EpicClient=Globals.IOS_CLIENT)
+
+        public static string GetTokenByExchange(string exchange_code, string EpicClient = Globals.IOS_CLIENT)
         {
             string url = Endpoint.Token;
             RestClient client = new RestClient(url);
@@ -33,9 +35,9 @@ namespace CandyLauncher
 
             RestResponse response = client.Execute(request);
             sendRequestLog(url, request, response);
-            if((int)response.StatusCode != 200) 
+            if ((int) response.StatusCode != 200) 
             {
-                if (Globals.debug == "false")
+                if (!Globals.debug)
                 {
                     Console.Clear();
                 }
@@ -47,7 +49,6 @@ namespace CandyLauncher
             {
                 return response.Content.ToString();
             }
-            
         }
 
         public static RestResponse GetTokenByDeviceAuth(string account_id, string device_id, string secret)
@@ -62,7 +63,6 @@ namespace CandyLauncher
             request.AddParameter("account_id", account_id);
             request.AddParameter("device_id", device_id);
             request.AddParameter("secret", secret);
-
 
             RestResponse response = client.Execute(request);
             sendRequestLog(url, request, response);
@@ -84,9 +84,6 @@ namespace CandyLauncher
             string exchange = (string)jsonObject2["code"];
 
 
-
-
-
             string url2 = Endpoint.Token;
             RestClient client2 = new RestClient(url2);
             RestRequest request2 = new RestRequest("", Method.Post);
@@ -101,7 +98,6 @@ namespace CandyLauncher
             sendRequestLog(url2, request2, response2);
             JObject jsonObject = JsonConvert.DeserializeObject<JObject>(response2.Content.ToString());
             string accessToken = (string)jsonObject["access_token"];
-
 
             string url3 = Endpoint.ExchangeCode;
             RestClient client3 = new RestClient(url3);
@@ -130,13 +126,13 @@ namespace CandyLauncher
 
             RestResponse response = client.Execute(request);
             sendRequestLog(url, request, response);
-            if((int)response.StatusCode == 200)
+            if((int) response.StatusCode == 200)
             {
                 JObject jsonObject = JsonConvert.DeserializeObject<JObject>(response.Content.ToString());
                 string device_id = (string)jsonObject["deviceId"];
                 string secret = (string)jsonObject["secret"];
                 Config.AddAccount(name, account_id, device_id, secret);
-                if (Globals.debug == "false")
+                if (!Globals.debug)
                 {
                     Console.Clear();
                 }
