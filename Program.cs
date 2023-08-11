@@ -23,12 +23,12 @@ namespace CandyLauncher
             Selector("Bienvenue");
         }
 
-        public static void Selector(string message="None")
+        public static void Selector(string message = null)
         {
             int nb = 0;
             
             Config.ConfigData config = Config.Read();
-            if (message != "None") 
+            if (message is null) 
             {
                 Console.WriteLine($"{logger.Green($"Bienvenue dans le CandyLauncher v{Globals.version} !")}\n");
             }
@@ -39,6 +39,7 @@ namespace CandyLauncher
                 nb++;
                 Console.WriteLine($"{logger.Aqua(nb.ToString())}: {key}");
             }
+
             Console.Write("\nNuméro du compte à lancer: ");
             string name = Console.ReadLine();
             if (name == "0")
@@ -47,12 +48,12 @@ namespace CandyLauncher
                 Console.Write("Exchange Code: ");
                 string exchange_code = Console.ReadLine();
                 string req = Requests.GetTokenByExchange(exchange_code);
-                if(req != "Error")
+                if (req != "Error")
                 {
                     JObject jsonObject = JsonConvert.DeserializeObject<JObject>(req);
-                    string access_token = (string)jsonObject["access_token"];
-                    string account_id = (string)jsonObject["account_id"];
-                    string displayname = (string)jsonObject["displayName"];
+                    string access_token = (string) jsonObject["access_token"];
+                    string account_id = (string) jsonObject["account_id"];
+                    string displayname = (string) jsonObject["displayName"];
 
                     Requests.GenerateDeviceAuth(access_token, account_id, displayname);
                     Console.Clear();
@@ -73,7 +74,7 @@ namespace CandyLauncher
                 }
                 if(number > nb)
                 {
-                    if (Globals.debug == "false")
+                    if (!Globals.debug)
                     {
                         Console.Clear();
                     }
@@ -82,7 +83,7 @@ namespace CandyLauncher
                 }
                 else
                 {
-                    if (Globals.debug == "false")
+                    if (!Globals.debug)
                     {
                         Console.Clear();
                     }
@@ -95,10 +96,10 @@ namespace CandyLauncher
                     Console.WriteLine($"{logger.Aqua("Vérification en cours...")}");
                     RestResponse tokenResponse = Requests.GetTokenByDeviceAuth(account_id, device_id, secret);
                     JObject jsonObject = JsonConvert.DeserializeObject<JObject>(tokenResponse.Content.ToString());
-                    string access_token = (string)jsonObject["access_token"];
+                    string access_token = (string) jsonObject["access_token"];
                     if (!tokenResponse.IsSuccessStatusCode)
                     {
-                        if (Globals.debug == "false")
+                        if (!Globals.debug)
                         {
                             Console.Clear();
                         }
@@ -108,7 +109,6 @@ namespace CandyLauncher
                     else
                     {
                         string response = Requests.GenerateExchangeCode(access_token);
-
                         string workingDirectory = Globals.path;
                         string command = $"start \"\" FortniteLauncher.exe -AUTH_LOGIN=unused -AUTH_PASSWORD={response} AUTH_TYPE=exchangecode -epicapp=Fortnite -epicenv=Prod -epicportal";
 
@@ -130,10 +130,6 @@ namespace CandyLauncher
                         Console.WriteLine($"{ logger.Aqua($"Lancement du compte {logger.Pink(config.accounts.ElementAt(number - 1).Key)} ...")}");
                         Console.ReadKey();
                     }
-                   
-                    
-
-
                 }
             }
 
